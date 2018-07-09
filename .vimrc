@@ -1,8 +1,19 @@
+" <Leader>默认是\
 map <F10> :NERDTreeToggle<CR>
 map <F6> :bp<CR>
 map <F7> :bn<CR>
 
-" ***************** 全局设置 ************** " 
+
+" \s 一键保存
+func! SaveFile()
+    exec "w"
+endfunc
+map  <leader>s :call SaveFile()<CR>
+imap <leader>s <ESC>:call SaveFile()<CR>
+vmap <leader>s <ESC>:call SaveFile()<CR>
+
+
+" ***************** 全局设置 ************** "
 
 " 开启语法高亮功能
 syntax enable
@@ -15,7 +26,7 @@ set noswapfile
 filetype on
 " 根据侦测到的不同类型加载对应的插件
 filetype plugin on
- 
+
 " 自动缩进
 filetype indent on
 
@@ -80,7 +91,7 @@ set cursorline "高亮显示当前行
 
 set incsearch " 输入字符串就显示匹配点
 set hlsearch "高亮显示搜索结果
- 
+
 " 禁止显示滚动条
 set guioptions-=l
 set guioptions-=L
@@ -89,14 +100,14 @@ set guioptions-=R
 " 禁止显示菜单和工具条
 set guioptions-=m
 set guioptions-=T
- 
+
 " 将制表符扩展为空格
 "set expandtab
 " 设置编辑时制表符占用空格数
 set tabstop=4
 " 设置格式化时制表符占用空格数
 set shiftwidth=4
- 
+
 " Powerline 设置
 " 设置状态栏主题风格
 let g:Powerline_colorscheme='solarized256'
@@ -143,10 +154,31 @@ Plugin 'davidhalter/jedi-vim' "python 补全，不依赖于tags,但比较慢，�
 Plugin 'vim-scripts/Markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'minibufexpl.vim'
+Bundle 'kien/rainbow_parentheses.vim'
 Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'taglist.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tomasr/molokai'
 " 插件列表结束
 call vundle#end()
+
+
+" 主题 solarized
+"let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+let g:solarized_contrast="normal"
+let g:solarized_visibility="normal"
+
+" 主题 molokai
+let g:molokai_original = 1
+" 配色方案
+set background=dark
+set t_Co=256
+"colorscheme solarized
+"colorscheme molokai
 
 "-- Taglist setting --
 set tags=tags;/
@@ -159,7 +191,7 @@ let Tlist_File_Fold_Auto_Close=1 "非当前文件，函数列表折叠隐藏
 "是否一直处理tags.1:处理;0:不处理
 let Tlist_Process_File_Always=1 "实时更新tags
 let Tlist_Inc_Winwidth=0
-let Tlist_Auto_Open=1 
+let Tlist_Auto_Open=1
 let Tlist_Exit_OnlyWindow=1
 let Tlist_WinWidth=40
 let Tlist_Use_SingleClick=1
@@ -192,31 +224,31 @@ nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
-nmap <C-Space>s :scs find s <C-R>=expand("<cword>")<CR><CR>  
-nmap <C-Space>g :scs find g <C-R>=expand("<cword>")<CR><CR>  
-nmap <C-Space>c :scs find c <C-R>=expand("<cword>")<CR><CR>  
-nmap <C-Space>t :scs find t <C-R>=expand("<cword>")<CR><CR>  
-nmap <C-Space>e :scs find e <C-R>=expand("<cword>")<CR><CR>  
-nmap <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>  
-nmap <C-Space>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>  
-nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>  
-  
-" Hitting CTRL-space *twice* before the search type does a vertical  
-" split instead of a horizontal one  
-  
-nmap <C-Space><C-Space>s  
-    \:vert scs find s <C-R>=expand("<cword>")<CR><CR>  
-nmap <C-Space><C-Space>g  
-    \:vert scs find g <C-R>=expand("<cword>")<CR><CR>  
-nmap <C-Space><C-Space>c  
-    \:vert scs find c <C-R>=expand("<cword>")<CR><CR>  
-nmap <C-Space><C-Space>t  
-    \:vert scs find t <C-R>=expand("<cword>")<CR><CR>  
-nmap <C-Space><C-Space>e  
-    \:vert scs find e <C-R>=expand("<cword>")<CR><CR>  
-nmap <C-Space><C-Space>i  
-    \:vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>  
-nmap <C-Space><C-Space>d  
+nmap <C-Space>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-Space>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+
+" Hitting CTRL-space *twice* before the search type does a vertical
+" split instead of a horizontal one
+
+nmap <C-Space><C-Space>s
+    \:vert scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>g
+    \:vert scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>c
+    \:vert scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>t
+    \:vert scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>e
+    \:vert scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>i
+    \:vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-Space><C-Space>d
     \:vert scs find d <C-R>=expand("<cword>")<CR><CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -306,7 +338,7 @@ let tagbar_width=32
 " " tagbar 子窗口中不显示冗余帮助信息
 let g:tagbar_compact=1
 " " 设置 ctags 对哪些代码标识符生成标签
-" 设置tagbar end 
+" 设置tagbar end
 
 
 
@@ -342,5 +374,71 @@ let g:miniBufExplMapWindowNavVim = 1 " 按下Ctrl+h/j/k/l，可以切换到当�
 let g:miniBufExplMapWindowNavArrows = 1 " 按下Ctrl+箭头，可以切换到当前窗口的上下左右窗口
 let g:miniBufExplMapCTabSwitchBufs = 1 " 启用以下两个功能：Ctrl+tab移到下一个buffer并在当前窗口打开；Ctrl+Shift+tab移到上一个buffer并在当前窗口打开；ubuntu好像不支持
 "let g:miniBufExplMapCTabSwitchWindows = 1 " 启用以下两个功能：Ctrl+tab移到下一个窗口；Ctrl+Shift+tab移到上一个窗口；ubuntu好像不支持
-let g:miniBufExplModSelTarget = 1 " 不要在不可编辑内容的窗口（如TagList窗口）中打开选中的buffer 
+let g:miniBufExplModSelTarget = 1 " 不要在不可编辑内容的窗口（如TagList窗口）中打开选中的buffer
 " -- MiniBufferExplorer end--
+
+"Bundle 'scrooloose/nerdcommenter' setting
+"常用操作：
+" <leader>cc，注释当前选中文本，如果选中的是整行则在每行首添加 //，如果选中
+"一行的部分内容则在选中部分前后添加分别 /、/；
+"<leader>cu，取消选中文本块的注释。
+let NERDSpaceDelims = 1
+"Bundle 'scrooloose/nerdcommenter' setting end
+
+
+" Bundle 'kien/rainbow_parentheses.vim'
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 40
+let g:rbpt_loadcmd_toggle = 0
+" Bundle 'kien/rainbow_parentheses.vim end
+
+
+" bronson/vim-trailing-whitespace
+
+" 推荐等级：★★★★★
+
+" 将代码行最后无效的空格标红
+
+" vimrc中配置如下：
+
+"for show no user whitespaces
+map <leader><space> :FixWhitespace<cr>	" \+space去掉末尾空格
+" bronson/vim-trailing-whitespace end
+
+
+" syntastic是一款支持多语言的实时语法检查插件。在 syntastic 的作用下，编码中、编译前，所有语法错误都将被抓出来并 呈现给你。
+" vimrc中配置如下：
+" " 使用pyflakes,速度比pylint快
+" Bundle 'scrooloose/syntastic'
+let g:syntastic_error_symbol = '✗'	"set error or warning signs
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_highlighting = 0
+"let g:syntastic_python_checker="flake8,pyflakes,pep8,pylint"
+let g:syntastic_python_checkers=['pyflakes']
+"highlight SyntasticErrorSign guifg=white guibg=black
+
+let g:syntastic_cpp_include_dirs = ['/usr/include/']
+let g:syntastic_cpp_remove_include_errors = 1
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libstdc++'
+let g:syntastic_enable_balloons = 1	"whether to show balloons
+" Bundle 'scrooloose/syntastic' setting end
