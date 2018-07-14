@@ -3,6 +3,8 @@ map <F10> :NERDTreeToggle<CR>
 map <F6> :bp<CR>
 map <F7> :bn<CR>
 
+map <F3> :cp<CR>
+map <F4> :cn<CR>
 
 " \s 一键保存
 func! SaveFile()
