@@ -1,4 +1,5 @@
 " <Leader>默认是\
+" 全局替换可以使用:%s/old/new/g
 map <F10> :NERDTreeToggle<CR>
 map <F6> :bp<CR>
 map <F7> :bn<CR>
