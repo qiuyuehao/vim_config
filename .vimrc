@@ -1,6 +1,6 @@
 " <Leader>默认是\
 " 全局替换可以使用:%s/old/new/g
-map <F10> :NERDTreeToggle<CR>
+map <F9> :NERDTreeToggle<CR>
 map <F6> :bp<CR>
 map <F7> :bn<CR>
 
@@ -17,7 +17,16 @@ vmap <leader>s <ESC>:call SaveFile()<CR>
 
 
 " ***************** 全局设置 ************** "
-
+if has("autocmd")
+  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
+  au InsertEnter,InsertChange *
+    \ if v:insertmode == 'i' |
+    \   silent execute '!echo -ne "\e[5 q"' | redraw! |
+    \ elseif v:insertmode == 'r' |
+    \   silent execute '!echo -ne "\e[3 q"' | redraw! |
+    \ endif
+  au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+endif
 " 开启语法高亮功能
 syntax enable
 " 允许用指定语法高亮配色方案替换默认方案
