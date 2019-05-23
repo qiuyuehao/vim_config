@@ -7,6 +7,17 @@ map <F7> :bn<CR>
 map <F3> :cp<CR>
 map <F4> :cn<CR>
 
+" 映射<leader>num到num buffer
+map <leader>1 :b 1<CR>
+map <leader>2 :b 2<CR>
+map <leader>3 :b 3<CR>
+map <leader>4 :b 4<CR>
+map <leader>5 :b 5<CR>
+map <leader>6 :b 6<CR>
+map <leader>7 :b 7<CR>
+map <leader>8 :b 8<CR>
+map <leader>9 :b 9<CR>
+
 " \s 一键保存
 func! SaveFile()
     exec "w"
