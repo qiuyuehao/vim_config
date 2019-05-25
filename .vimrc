@@ -26,6 +26,8 @@ map  <leader>s :call SaveFile()<CR>
 imap <leader>s <ESC>:call SaveFile()<CR>
 vmap <leader>s <ESC>:call SaveFile()<CR>
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap fw w !sudo tee > /dev/null %
 
 " ***************** 全局设置 ************** "
 if has("autocmd")
