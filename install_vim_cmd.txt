@@ -1,5 +1,0 @@
-vim 安装注意事项
-sudo apt-get install vim-gnome
-sudo apt-get install vim
-sudo apt-get install ctags
-source $VIMRUNTIME/mswin.vim  "支持ctrl+c ctrl+v复制粘贴功能
