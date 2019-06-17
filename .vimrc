@@ -202,8 +202,14 @@ let g:molokai_original = 1
 " 配色方案
 set background=dark
 set t_Co=256
-"colorscheme solarized
-"colorscheme molokai
+" colorscheme solarized
+" colorscheme molokai
+set background=dark
+
+colo freya
+" set background="#00ffCC"
+"set guifont=Lucida_Console:h18:cANSI
+
 
 "-- Taglist setting --
 set tags=tags;/
@@ -218,7 +224,7 @@ let Tlist_Process_File_Always=1 "实时更新tags
 let Tlist_Inc_Winwidth=0
 let Tlist_Auto_Open=1
 let Tlist_Exit_OnlyWindow=1
-let Tlist_WinWidth=40
+let Tlist_WinWidth=35
 let Tlist_Use_SingleClick=1
 "taglist setting end
 
@@ -452,18 +458,22 @@ map <leader><space> :FixWhitespace<cr>	" \+space去掉末尾空格
 " vimrc中配置如下：
 " " 使用pyflakes,速度比pylint快
 " Bundle 'scrooloose/syntastic'
-let g:syntastic_error_symbol = '✗'	"set error or warning signs
+let g:syntastic_skip_checks = 1
+" let g:syntastic_error_symbol = '✗'	"set error or warning signs
+let g:syntastic_error_symbol = 'E'	"set error or warning signs
 let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_check_on_open=1
+let g:syntastic_check_on_open=0
 let g:syntastic_enable_highlighting = 0
 "let g:syntastic_python_checker="flake8,pyflakes,pep8,pylint"
 let g:syntastic_python_checkers=['pyflakes']
+let g:pymode_lint_on_write = 0
+let g:ycm_show_diagnostics_ui = 0
 "highlight SyntasticErrorSign guifg=white guibg=black
 
 let g:syntastic_cpp_include_dirs = ['/usr/include/']
 let g:syntastic_cpp_remove_include_errors = 1
-let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_check_header = 0
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libstdc++'
-let g:syntastic_enable_balloons = 1	"whether to show balloons
+let g:syntastic_enable_balloons = 0	"whether to show balloons
 " Bundle 'scrooloose/syntastic' setting end
