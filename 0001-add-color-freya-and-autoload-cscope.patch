@@ -1,0 +1,349 @@
+From ff17cb4fc68e6011f7eb9ac4696cca48d662e6ac Mon Sep 17 00:00:00 2001
+From: qyh <scutqyh@163.com>
+Date: Mon, 17 Jun 2019 10:37:50 +0800
+Subject: [PATCH] add color freya and autoload cscope
+
+---
+ .vimrc                     |  24 ++++--
+ colors/freya.vim           |  80 ++++++++++++++++++++
+ plugin/autoload_cscope.vim | 184 +++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 281 insertions(+), 7 deletions(-)
+ create mode 100644 colors/freya.vim
+ create mode 100644 plugin/autoload_cscope.vim
+
+diff --git a/.vimrc b/.vimrc
+index e7e47bb..f6d245e 100644
+--- a/.vimrc
++++ b/.vimrc
+@@ -202,8 +202,14 @@ let g:molokai_original = 1
+ " 配色方案
+ set background=dark
+ set t_Co=256
+-"colorscheme solarized
+-"colorscheme molokai
++" colorscheme solarized
++" colorscheme molokai
++set background=dark
++
++colo freya
++" set background="#00ffCC"
++"set guifont=Lucida_Console:h18:cANSI
++
+ 
+ "-- Taglist setting --
+ set tags=tags;/
+@@ -218,7 +224,7 @@ let Tlist_Process_File_Always=1 "实时更新tags
+ let Tlist_Inc_Winwidth=0
+ let Tlist_Auto_Open=1
+ let Tlist_Exit_OnlyWindow=1
+-let Tlist_WinWidth=40
++let Tlist_WinWidth=35
+ let Tlist_Use_SingleClick=1
+ "taglist setting end
+ 
+@@ -452,18 +458,22 @@ map <leader><space> :FixWhitespace<cr>	" \+space去掉末尾空格
+ " vimrc中配置如下：
+ " " 使用pyflakes,速度比pylint快
+ " Bundle 'scrooloose/syntastic'
+-let g:syntastic_error_symbol = '✗'	"set error or warning signs
++let g:syntastic_skip_checks = 1
++" let g:syntastic_error_symbol = '✗'	"set error or warning signs
++let g:syntastic_error_symbol = 'E'	"set error or warning signs
+ let g:syntastic_warning_symbol = '⚠'
+-let g:syntastic_check_on_open=1
++let g:syntastic_check_on_open=0
+ let g:syntastic_enable_highlighting = 0
+ "let g:syntastic_python_checker="flake8,pyflakes,pep8,pylint"
+ let g:syntastic_python_checkers=['pyflakes']
++let g:pymode_lint_on_write = 0
++let g:ycm_show_diagnostics_ui = 0
+ "highlight SyntasticErrorSign guifg=white guibg=black
+ 
+ let g:syntastic_cpp_include_dirs = ['/usr/include/']
+ let g:syntastic_cpp_remove_include_errors = 1
+-let g:syntastic_cpp_check_header = 1
++let g:syntastic_cpp_check_header = 0
+ let g:syntastic_cpp_compiler = 'clang++'
+ let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libstdc++'
+-let g:syntastic_enable_balloons = 1	"whether to show balloons
++let g:syntastic_enable_balloons = 0	"whether to show balloons
+ " Bundle 'scrooloose/syntastic' setting end
+diff --git a/colors/freya.vim b/colors/freya.vim
+new file mode 100644
+index 0000000..fadc690
+--- /dev/null
++++ b/colors/freya.vim
+@@ -0,0 +1,80 @@
++set background=dark
++
++hi clear
++
++if exists("syntax_on")
++    syntax reset
++endif
++
++let colors_name = "freya"
++
++hi Normal ctermbg=0 ctermfg=7 cterm=none guibg=#2a2a2a guifg=#dcdccc gui=none
++
++hi Cursor guibg=fg guifg=bg gui=none
++hi CursorColumn guibg=#3f3f3f gui=none
++hi CursorLine guibg=#3f3f3f gui=none
++hi CursorLineNr guibg=#3f3f3f guifg=#b0a397 gui=bold
++hi DiffAdd guibg=#008b00 guifg=fg gui=none
++hi DiffChange guibg=#00008b guifg=fg gui=none
++hi DiffDelete guibg=#8b0000 guifg=fg gui=none
++hi DiffText guibg=#0000cd guifg=fg gui=bold
++hi Directory guibg=bg guifg=#d4b064 gui=none
++hi ErrorMsg guibg=bg guifg=#f07070 gui=bold
++hi FoldColumn ctermbg=bg guibg=bg guifg=#c2b680 gui=none
++hi Folded guibg=#101010 guifg=#c2b680 gui=none
++hi IncSearch guibg=#866a4f guifg=fg gui=none
++hi LineNr guibg=bg guifg=#9f8f80 gui=none
++hi ModeMsg guibg=bg guifg=fg gui=bold
++hi MoreMsg guibg=bg guifg=#dabfa5 gui=bold
++hi NonText ctermfg=8 guibg=bg guifg=#9f8f80 gui=bold
++hi Pmenu guibg=#a78869 guifg=#000000 gui=none
++hi PmenuSbar guibg=#B99F86 guifg=fg gui=none
++hi PmenuSel guibg=#c0aa94 guifg=bg gui=none
++hi PmenuThumb guibg=#f7f7f1 guifg=bg gui=none
++hi Question guibg=bg guifg=#dabfa5 gui=bold
++hi Search guibg=#c0aa94 guifg=bg gui=none
++hi SignColumn ctermbg=bg guibg=bg guifg=#c2b680 gui=none
++hi SpecialKey guibg=bg guifg=#d4b064 gui=none
++if has("spell")
++    hi SpellBad guisp=#f07070 gui=undercurl
++    hi SpellCap guisp=#7070f0 gui=undercurl
++    hi SpellLocal guisp=#70f0f0 gui=undercurl
++    hi SpellRare guisp=#f070f0 gui=undercurl
++endif
++hi StatusLine ctermbg=7 ctermfg=0 guibg=#736559 guifg=#f7f7f1 gui=bold
++hi StatusLineNC ctermbg=8 ctermfg=0 guibg=#564d43 guifg=#f7f7f1 gui=none
++hi TabLine guibg=#564d43 guifg=#f7f7f1 gui=underline
++hi TabLineFill guibg=#564d43 guifg=#f7f7f1 gui=underline
++hi TabLineSel guibg=bg guifg=#f7f7f1 gui=bold
++hi Title ctermbg=0 ctermfg=15 guifg=#f7f7f1 gui=bold
++" hi VertSplit ctermbg=7 ctermfg=0 guibg=#564d43 guifg=#f7f7f1 gui=none
++" if version >= 700
++	" hi Visual ctermbg=7 ctermfg=0 guibg=#5f5f5f gui=none
++" else
++	" hi Visual ctermbg=7 ctermfg=0 guibg=#5f5f5f guifg=fg gui=none
++" endif
++hi VisualNOS guibg=bg guifg=#c0aa94 gui=bold,underline
++hi WarningMsg guibg=bg guifg=#f07070 gui=none
++hi WildMenu guibg=#c0aa94 guifg=bg gui=bold
++
++hi Comment guibg=bg guifg=#c2b680 gui=none
++hi Constant guibg=bg guifg=#afe091 gui=none
++hi Error guibg=bg guifg=#f07070 gui=none
++hi Identifier guibg=bg guifg=#dabfa5 gui=none
++hi Ignore guibg=bg guifg=bg gui=none
++hi lCursor guibg=#c0aa94 guifg=bg gui=none
++hi MatchParen guibg=#907d6f gui=none
++hi PreProc guibg=bg guifg=#c2aed0 gui=none
++hi Special guibg=bg guifg=#d4b064 gui=none
++hi Statement guibg=bg guifg=#e0af91 gui=bold
++hi Todo guibg=#aed0ae guifg=bg gui=none
++hi Type guibg=bg guifg=#dabfa5 gui=bold
++hi Underlined guibg=bg guifg=#d4b064 gui=underline
++
++hi htmlBold ctermbg=0 ctermfg=15 guibg=bg guifg=fg gui=bold
++hi htmlItalic ctermbg=0 ctermfg=15 guibg=bg guifg=fg gui=italic
++hi htmlUnderline ctermbg=0 ctermfg=15 guibg=bg guifg=fg gui=underline
++hi htmlBoldItalic ctermbg=0 ctermfg=15 guibg=bg guifg=fg gui=bold,italic
++hi htmlBoldUnderline ctermbg=0 ctermfg=15 guibg=bg guifg=fg gui=bold,underline
++hi htmlBoldUnderlineItalic ctermbg=0 ctermfg=15 guibg=bg guifg=fg gui=bold,underline,italic
++hi htmlUnderlineItalic ctermbg=0 ctermfg=15 guibg=bg guifg=fg gui=underline,italic
+diff --git a/plugin/autoload_cscope.vim b/plugin/autoload_cscope.vim
+new file mode 100644
+index 0000000..6e8d96d
+--- /dev/null
++++ b/plugin/autoload_cscope.vim
+@@ -0,0 +1,184 @@
++" Vim global plugin for autoloading cscope databases.
++" Last Change: Wed Jan 26 10:28:52 Jerusalem Standard Time 2011
++" Maintainer: Michael Conrad Tadpol Tilsra <tadpol@tadpol.org>
++" Revision: 0.5
++
++if exists("loaded_autoload_cscope")
++	finish
++endif
++let loaded_autoload_cscope = 1
++
++" requirements, you must have these enabled or this is useless.
++if(  !has('cscope') || !has('modify_fname') )
++  finish
++endif
++
++let s:save_cpo = &cpo
++set cpo&vim
++
++" If you set this to anything other than 1, the menu and macros will not be
++" loaded.  Useful if you have your own that you like.  Or don't want my stuff
++" clashing with any macros you've made.
++if !exists("g:autocscope_menus")
++  let g:autocscope_menus = 1
++endif
++
++"==
++" windowdir
++"  Gets the directory for the file in the current window
++"  Or the current working dir if there isn't one for the window.
++"  Use tr to allow that other OS paths, too
++function s:windowdir()
++  if winbufnr(0) == -1
++    let unislash = getcwd()
++  else 
++    let unislash = fnamemodify(bufname(winbufnr(0)), ':p:h')
++  endif
++    return tr(unislash, '\', '/')
++endfunc
++"
++"==
++" Find_in_parent
++" find the file argument and returns the path to it.
++" Starting with the current working dir, it walks up the parent folders
++" until it finds the file, or it hits the stop dir.
++" If it doesn't find it, it returns "Nothing"
++function s:Find_in_parent(fln,flsrt,flstp)
++  let here = a:flsrt
++  while ( strlen( here) > 0 )
++    if filereadable( here . "/" . a:fln )
++      return here
++    endif
++    let fr = match(here, "/[^/]*$")
++    if fr == -1
++      break
++    endif
++    let here = strpart(here, 0, fr)
++    if here == a:flstp
++      break
++    endif
++  endwhile
++  return "Nothing"
++endfunc
++"
++"==
++" Cycle_macros_menus
++"  if there are cscope connections, activate that stuff.
++"  Else toss it out.
++"  TODO Maybe I should move this into a seperate plugin?
++let s:menus_loaded = 0
++function s:Cycle_macros_menus()
++  if g:autocscope_menus != 1
++    return
++  endif
++  if cscope_connection()
++    if s:menus_loaded == 1
++      return
++    endif
++    let s:menus_loaded = 1
++    set csto=0
++    set cst
++    silent! map <unique> <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
++    silent! map <unique> <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
++    silent! map <unique> <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
++    silent! map <unique> <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
++    silent! map <unique> <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
++    silent! map <unique> <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
++    silent! map <unique> <C-\>f :cs find f <C-R>=expand("<cword>")<CR><CR>
++    silent! map <unique> <C-\>i :cs find i <C-R>=expand("<cword>")<CR><CR>
++    if has("menu")
++      nmenu &Cscope.Find.Symbol<Tab><c-\\>s
++        \ :cs find s <C-R>=expand("<cword>")<CR><CR>
++      nmenu &Cscope.Find.Definition<Tab><c-\\>g
++        \ :cs find g <C-R>=expand("<cword>")<CR><CR>
++      nmenu &Cscope.Find.Called<Tab><c-\\>d
++        \ :cs find d <C-R>=expand("<cword>")<CR><CR>
++      nmenu &Cscope.Find.Calling<Tab><c-\\>c
++        \ :cs find c <C-R>=expand("<cword>")<CR><CR>
++      nmenu &Cscope.Find.Assignment<Tab><c-\\>t
++        \ :cs find t <C-R>=expand("<cword>")<CR><CR>
++      nmenu &Cscope.Find.Egrep<Tab><c-\\>e
++        \ :cs find e <C-R>=expand("<cword>")<CR><CR>
++      nmenu &Cscope.Find.File<Tab><c-\\>f
++        \ :cs find f <C-R>=expand("<cword>")<CR><CR>
++      nmenu &Cscope.Find.Including<Tab><c-\\>i
++        \ :cs find i <C-R>=expand("<cword>")<CR><CR>
++"      nmenu &Cscope.Add :cs add 
++"      nmenu &Cscope.Remove  :cs kill 
++      nmenu &Cscope.Reset :cs reset<cr>
++      nmenu &Cscope.Show :cs show<cr>
++      " Need to figure out how to do the add/remove. May end up writing
++      " some container functions.  Or tossing them out, since this is supposed
++      " to all be automatic.
++    endif
++  else
++    let s:menus_loaded = 0
++    set nocst
++    silent! unmap <C-\>s
++    silent! unmap <C-\>g
++    silent! unmap <C-\>d
++    silent! unmap <C-\>c
++    silent! unmap <C-\>t
++    silent! unmap <C-\>e
++    silent! unmap <C-\>f
++    silent! unmap <C-\>i
++    if has("menu")  " would rather see if the menu exists, then remove...
++      silent! nunmenu Cscope
++    endif
++  endif
++endfunc
++"
++"==
++" Unload_csdb
++"  drop cscope connections.
++function s:Unload_csdb()
++  if exists("b:csdbpath")
++    if cscope_connection(3, "out", b:csdbpath)
++      let save_csvb = &csverb
++      set nocsverb
++      exe "cs kill " . b:csdbpath
++      set csverb
++      let &csverb = save_csvb
++    endif
++  endif
++endfunc
++"
++"==
++" Cycle_csdb
++"  cycle the loaded cscope db.
++function s:Cycle_csdb()
++    if exists("b:csdbpath")
++      if cscope_connection(3, "out", b:csdbpath)
++        return
++        "it is already loaded. don't try to reload it.
++      endif
++    endif
++    let newcsdbpath = s:Find_in_parent("cscope.out",s:windowdir(),$HOME)
++"    echo "Found cscope.out at: " . newcsdbpath
++"    echo "Windowdir: " . s:windowdir()
++    if newcsdbpath != "Nothing"
++      let b:csdbpath = newcsdbpath
++      if !cscope_connection(3, "out", b:csdbpath)
++        let save_csvb = &csverb
++        set nocsverb
++        exe "cs add " . b:csdbpath . "/cscope.out " . b:csdbpath
++        set csverb
++        let &csverb = save_csvb
++      endif
++      "
++    else " No cscope database, undo things. (someone rm-ed it or somesuch)
++      call s:Unload_csdb()
++    endif
++endfunc
++
++" auto toggle the menu
++augroup autoload_cscope
++ au!
++ au BufEnter *.[chly]  call <SID>Cycle_csdb() | call <SID>Cycle_macros_menus()
++ au BufEnter *.cc      call <SID>Cycle_csdb() | call <SID>Cycle_macros_menus()
++ au BufUnload *.[chly] call <SID>Unload_csdb() | call <SID>Cycle_macros_menus()
++ au BufUnload *.cc     call <SID>Unload_csdb() | call <SID>Cycle_macros_menus()
++augroup END
++
++let &cpo = s:save_cpo
++
+-- 
+2.7.4
+
