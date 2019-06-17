@@ -1,6 +1,7 @@
 " <Leader>默认是\
 " 全局替换可以使用:%s/old/new/g
 map <F9> :NERDTreeToggle<CR>
+map <F10> :Tlist<CR>
 map <F6> :bp<CR>
 map <F7> :bn<CR>
 
@@ -183,7 +184,7 @@ Bundle 'kien/rainbow_parentheses.vim'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'taglist.vim'
-#Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
