@@ -26,6 +26,14 @@ map  <leader>s :call SaveFile()<CR>
 imap <leader>s <ESC>:call SaveFile()<CR>
 vmap <leader>s <ESC>:call SaveFile()<CR>
 
+" \h 一键转换tab为空格
+func! ChangeTab()
+    exec "set ts=4"
+    exec "%retab!"
+endfunc
+map  <leader>h :call ChangeTab()<CR>
+imap <leader>h <ESC>:call ChangeTab()<CR>
+vmap <leader>h <ESC>:call ChangeTab()<CR>
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap fw w !sudo tee > /dev/null %
 
@@ -126,10 +134,28 @@ set guioptions-=R
 set guioptions-=m
 set guioptions-=T
 
+
+
+
+" 其中 tabstop 表示一个 tab 显示出来是多少个空格的长度，默认 8。
+
+" softtabstop 表示在编辑模式的时候按退格键的时候退回缩进的长度，当使用 expandtab 时特别有用。
+
+" shiftwidth 表示每一级缩进的长度，一般设置成跟 softtabstop 一样。
+
+" 当设置成 expandtab 时，缩进用空格来表示，noexpandtab 则是用制表符表示一个缩进。
+" :%ret! 4
+" 如果没有给定4，则用当前的tab宽度设定替换为space。
+" 加!是用于处理非空白字符之后的TAB，即所有的TAB，
+" 不加!，则只处理行首的TAB。
+
 " 将制表符扩展为空格
-"set expandtab
+set expandtab
+set softtabstop=4
 " 设置编辑时制表符占用空格数
 set tabstop=4
+set ts=4
+set sw=4
 " 设置格式化时制表符占用空格数
 set shiftwidth=4
 
@@ -176,6 +202,8 @@ Plugin 'nathanaelkane/vim-indent-guides.git' "缩进对齐显示
 "Plugin 'vim-scripts/DfrankUtil' "indexer 依赖
 "Plugin 'vim-scripts/vimprj' "indexer 依赖
 Plugin 'davidhalter/jedi-vim' "python 补全，不依赖于tags,但比较慢，可以使用indexer替换，但不能跳转项目外
+" Plugin "klen/python-mode"
+Bundle "klen/python-mode"
 Plugin 'vim-scripts/Markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'minibufexpl.vim'
@@ -224,7 +252,7 @@ let Tlist_Process_File_Always=1 "实时更新tags
 let Tlist_Inc_Winwidth=0
 let Tlist_Auto_Open=1
 let Tlist_Exit_OnlyWindow=1
-let Tlist_WinWidth=35
+let Tlist_WinWidth=30
 let Tlist_Use_SingleClick=1
 "taglist setting end
 
@@ -477,3 +505,13 @@ let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libstdc++'
 let g:syntastic_enable_balloons = 0	"whether to show balloons
 " Bundle 'scrooloose/syntastic' setting end
+
+noremap <C-Down>  <C-W>j
+noremap <C-Up>    <C-W>k
+noremap <C-Left>  <C-W>h
+noremap <C-Right> <C-W>l
+
+
+" setting for pydiction
+let g:pydiction_location = '/home/qyh/.vim/bundle/pydiction/complete-dict'
+let g:pydiction_menu_height = 3
