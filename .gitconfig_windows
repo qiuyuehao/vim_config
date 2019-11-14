@@ -14,6 +14,6 @@
 [merge]
 	tool = bc3
 [mergetool "bc3"]
-	cmd = \"C:\\Program Files (x86)\\Beyond Compare 3\\BCompare.exe\"  "$LOCAL" "$BASE" "$REMOTE" "$MERGED"
+	cmd = \"C:\\Program Files (x86)\\Beyond Compare 3\\BCompare.exe\"  \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
 [mergetool]
 	keepBackup = false
