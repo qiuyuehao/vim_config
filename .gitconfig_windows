@@ -6,14 +6,14 @@
 [core]
 	fileMode = false
 [diff]
-	tool = bc2
-[difftool "bc2"]
-	cmd = \"C:/Program Files (x86)\\Beyond Compare 2\\BC2.exe\"  "$LOCAL" "$REMOTE"
+	tool = bc3
+[difftool "bc3"]
+	cmd = \"C:\\Program Files (x86)\\Beyond Compare 3\\BCompare.exe\"  \"$LOCAL\" \"$REMOTE\"
 [difftool]
 	prompt = false
 [merge]
-	tool = bc2
-[mergetool "bc2"]
-	cmd = \"C:/Program Files (x86)\\Beyond Compare 2\\BC2.exe\"  "$LOCAL" "$BASE" "$REMOTE" "$MERGED"
+	tool = bc3
+[mergetool "bc3"]
+	cmd = \"C:\\Program Files (x86)\\Beyond Compare 3\\BCompare.exe\"  "$LOCAL" "$BASE" "$REMOTE" "$MERGED"
 [mergetool]
 	keepBackup = false
