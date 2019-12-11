@@ -137,3 +137,13 @@ alias cdsyna="cd $SYNA_KERNEL_PATH"
 alias vimsyna="cd $SYNA_KERNEL_PATH;$VIMTOUCH"
 alias vimsynadsx="cd $SYNA_KERNEL_PATH;$VIMDSX"
 alias vimsynatcm="cd $SYNA_KERNEL_PATH;$VIMTCM"
+alias mb='make bootimage -j4'
+alias db='fastboot flash boot /home/qyh/dragon/IntrinsycDragonBoard810-AndroidBSP-MM-3.0/Source_Package/APQ8094_LA.BF64.1.2.2-01640-8x94.0_MM_V30/out/target/product/msm8994/boot.img'
+alias akill='adb kill-server'
+alias astart='adb start-server'
+alias np='notepad-plus-plus'
+ssh-add ~/.ssh/id_rsa_github > /dev/null 2>&1
+ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
+
+export SYNA_HOME=/toolbox/release/linux-gnu-x86_64
+export PATH=/toolbox/release/linux-gnu-x86_64/bin:$PATH
