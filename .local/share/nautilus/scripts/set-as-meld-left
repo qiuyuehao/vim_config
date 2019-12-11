@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+# This script opens a compare tool with selected files/directory by 
+# script "set-as-*-left".
+# so you should run "set-as-*-left" first
+# Copyright (C) 2010  ReV Fycd
+# Distributed under the terms of GNU GPL version 2 or later
+#
+# Install in ~/.gnome2/nautilus-scripts or ~/Nautilus/scripts
+# or ~/.local/share/nautilus/scripts (ubuntu 14.04 LTS)
+# You need to be running Nautilus 1.0.3+ to use scripts.
+# You also need to install one compare tools to use scripts(such like meld)
+# You can change the $compareTool to other compare tools(like "Kdiff3") that 
+# you have already installed before.
+
+compareTool="meld"
+if [ -n "$NAUTILUS_SCRIPT_SELECTED_FILE_PATHS" ]; then
+    set $NAUTILUS_SCRIPT_SELECTED_FILE_PATHS
+    if [ $# -eq 1 ]; then
+        file1="$1"
+        echo "set-as-Meld-left Copyright (C) 2010  ReV Fycd"
+        echo "${compareTool} ${file1} \\"> ~/.startcompare
+    fi
+fi

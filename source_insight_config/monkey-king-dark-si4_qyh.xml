@@ -18,7 +18,7 @@
 		EnableEvents="0"
 		WinHelpPath=""
 		HTMLHelpPath=""
-		CheckForUpdates="1"
+		CheckForUpdates="0"
 		/>
 	<DisplayPreferences>
 		<GeneralDisplayOptions
@@ -51,7 +51,7 @@
 			CascadeNewWindows="1"
 			ShowProjectInWorkspace="1"
 			ShowOutlineHover="1"
-			AlwaysShowOutlineMarks="0"
+			AlwaysShowOutlineMarks="1"
 			OutlineIndent="0"
 			OutlineAllBlocks="1"
 			ShowNestingLines="1"
@@ -168,7 +168,7 @@
 		/>
 	<DisplayColors>
 		<Item Name="DefaultText" Color="#ffffff" />
-		<Item Name="WindowBackground" Color="#32332d" />
+		<Item Name="WindowBackground" Color="#202020" />
 		<Item Name="SelectionBar" Color="#e6e6e6" />
 		<Item Name="PrintedDefaultText" Color="#000000" />
 		<Item Name="PrintedWindowBackground" Color="#ffffff" />
@@ -423,6 +423,10 @@
 	</Menus>
 	<Keymaps>
 		<Main>
+			<item Command="Symbol Info..." Keycode="(C)mouse(R+SEL)" />
+			<item Command="Scroll Half Page Down" Keycode="(A)V" />
+			<item Command="Scroll Half Page Up" Keycode="(A)C" />
+			<item Command="Pick Window..." Keycode="(C)W" />
 			<item Command="Complete Symbol" Keycode="(C)8" />
 			<item Command="Activate Project Symbol List" Keycode="F7" />
 			<item Command="Activate Project Symbol List" Keycode="(A)G" />
@@ -431,7 +435,6 @@
 			<item Command="Tab" Keycode="Tab" />
 			<item Command="Enter" Keycode="(N)Enter" />
 			<item Command="Enter" Keycode="Enter" />
-			<item Command="Symbol Info..." Keycode="(C)mouse(R+SEL)" />
 			<item Command="Make Column Selection" Keycode="(A)mouse(L)" />
 			<item Command="Select To" Keycode="(S)mouse(L)" />
 			<item Command="Copy" Keycode="mouse(LR)" />
@@ -472,7 +475,6 @@
 			<item Command="Reload File" Keycode="(CS)O" />
 			<item Command="Save" Keycode="(C)S" />
 			<item Command="Close All" Keycode="(CS)W" />
-			<item Command="Close" Keycode="(C)W" />
 			<item Command="Open..." Keycode="(C)O" />
 			<item Command="New" Keycode="(C)N" />
 			<item Command="Repeat Typing" Keycode="(C)\" />
@@ -512,10 +514,6 @@
 			<item Command="Bottom Of File" Keycode="(C)End" />
 			<item Command="Top Of File" Keycode="(CN)Home" />
 			<item Command="Top Of File" Keycode="(C)Home" />
-			<item Command="Scroll Right" Keycode="(A)Right" />
-			<item Command="Scroll Left" Keycode="(A)Left" />
-			<item Command="Scroll Line Down" Keycode="(A)Down" />
-			<item Command="Scroll Line Up" Keycode="(A)Up" />
 			<item Command="Scroll Half Page Up" Keycode="(N)/" />
 			<item Command="Scroll Half Page Up" Keycode="(CN)PgUp" />
 			<item Command="Scroll Half Page Up" Keycode="(C)PgUp" />
@@ -542,11 +540,8 @@
 			<item Command="Select To End Of Line" Keycode="(S)End" />
 			<item Command="Activate System Menu" Keycode="(A)Space" />
 			<item Command="Activate System Doc Menu" Keycode="(A)-" />
-			<item Command="Activate View Menu" Keycode="(A)V" />
 			<item Command="Activate Options Menu" Keycode="(A)O" />
-			<item Command="Activate Window Menu" Keycode="(A)W" />
 			<item Command="Activate Project Menu" Keycode="(A)P" />
-			<item Command="Activate Search Menu" Keycode="(A)S" />
 			<item Command="Activate Edit Menu" Keycode="(A)E" />
 			<item Command="Activate File Menu" Keycode="(A)F" />
 			<item Command="Cut" Keycode="(S)Del" />
@@ -613,8 +608,6 @@
 			<item Command="Load Layout D" Keycode="(CS)F4" />
 			<item Command="Select Next Snippet Placeholder" Keycode="(CS);" />
 			<item Command="Activate Snippet Window" Keycode="(CA)S" />
-			<item Command="Next File..." Keycode="(CS)N" />
-			<item Command="Save All" Keycode="(CA)A" />
 			<item Command="Search Files..." Keycode="(CS)F" />
 			<item Command="Lookup References..." Keycode="(C)/" />
 			<item Command="Search Web..." Keycode="(CA)W" />
@@ -628,11 +621,20 @@
 			<item Command="Incremental Search..." Keycode="(C)," />
 			<item Command="Open Project..." Keycode="(AS)P" />
 			<item Command="Cut Word" Keycode="(C)," />
-			<item Command="Restore Lines" Keycode="(A)D" />
 			<item Command="Drag Line Up" Keycode="(C)Up" />
 			<item Command="Drag Line Down" Keycode="(C)Down" />
-			<item Command="Symbol Info..." Keycode="(C)mouse(R+SEL)" />
 			<item Command="Enter" Keycode="Enter" />
+			<item Command="Open Project..." Keycode="(CS)P" />
+			<item Command="Add File..." Keycode="(CS)A" />
+			<item Command="New Project..." Keycode="(CS)N" />
+			<item Command="Scroll Half Page Up" Keycode="(A)W" />
+			<item Command="Scroll Half Page Down" Keycode="(A)S" />
+			<item Command="Scroll Half Page Down" Keycode="(A)Down" />
+			<item Command="Scroll Half Page Up" Keycode="(A)Up" />
+			<item Command="Go Forward" Keycode="(A)D" />
+			<item Command="Go Forward" Keycode="(A)Right" />
+			<item Command="Go Back" Keycode="(A)A" />
+			<item Command="Go Back" Keycode="(A)Left" />
 		</Main>
 	</Keymaps>
 	<CustomCommands>
@@ -994,7 +996,7 @@
 			LineUpWhiteSpace="1"
 			VisibleTabs="0"
 			VisibleSpaces="0"
-			ShowLineNumbers="0"
+			ShowLineNumbers="1"
 			ShowRightMargin="0"
 			ShowPageBreaks="0"
 			UseSymbolPane="0"
@@ -2420,8 +2422,8 @@
 		NoWarnings="1"
 		RunInBackground="1"
 		RunEveryMinutes="60"
-		AddNewFiles="0"
-		RemoveOldFiles="0"
+		AddNewFiles="1"
+		RemoveOldFiles="1"
 		SyncOnStartup="1"
 		/>
 	<ProjectDefaults
