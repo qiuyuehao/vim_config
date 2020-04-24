@@ -145,5 +145,14 @@ alias np='notepad-plus-plus'
 ssh-add ~/.ssh/id_rsa_github > /dev/null 2>&1
 ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
 
+
+export JAVA_HOME=/home/qyh/bin/jdk1.8.0_212
+export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH
+export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH export JRE_HOME=$JAVA
+
+
 export SYNA_HOME=/toolbox/release/linux-gnu-x86_64
 export PATH=/toolbox/release/linux-gnu-x86_64/bin:$PATH
+alias gdiff='git difftool -d --no-symlinks -y'
+#can use gdiff HEAD HEAD^
+#can use gdiff commit commit
