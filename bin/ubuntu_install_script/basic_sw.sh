@@ -13,19 +13,19 @@ deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main
 deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe
 deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security universe
 EOF
+
 cat /etc/apt/sources.list >> tmp.list
 sudo cp ./tmp.list /etc/apt/sources.list
 rm tmp.list
 
 sudo apt-get update
 
+#here should set the ~/bin to path, because we use the install.sh
 
-sudo apt-get install vim -y
-sudo apt-get install -f -y
-sudo apt-get install vim-gnome -y
-sudo apt-get install -f -y
+install.sh vim vim-gnome redshift
 
-sudo apt-get install python2.7-dev -y
+install.sh python2.7-dev
+install.sh mutt
 sudo apt-get install -f -y
 sudo apt install git gitk -y
 git config --global user.name "yuehao.qiu"
