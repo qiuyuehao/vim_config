@@ -1,0 +1,88 @@
+[global_config]
+  inactive_color_offset = 1.0
+  suppress_multiple_term_dialog = True
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      profile = default
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      size = 925, 570
+      type = Window
+  [[dragon]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_window = True
+      maximised = True
+      order = 0
+      parent = ""
+      position = 65:24
+      size = 1855, 1056
+      title = dragon
+      type = Window
+    [[[child1]]]
+      active_page = 0
+      labels = vim, build, git
+      last_active_term = e08d71d2-e217-4e06-8b16-dfd2521cf6e6, b1fd22e9-fe5f-4083-b3df-6f2367084a6d, 4efb1c15-6e8c-4362-a523-5dedfc3f5bd0
+      order = 0
+      parent = child0
+      type = Notebook
+    [[[child3]]]
+      order = 1
+      parent = child1
+      position = 734
+      ratio = 0.716926070039
+      type = VPaned
+    [[[terminal2]]]
+      command = cd /home/qyh/syna/dragon/IntrinsycDragonBoard810-AndroidBSP-MM-3.0/Source_Package/APQ8094_LA.BF64.1.2.2-01640-8x94.0_MM_V30;cd kernel;cscope -Rbkq;vim drivers/input/touchscreen;bash
+      order = 0
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = e08d71d2-e217-4e06-8b16-dfd2521cf6e6
+    [[[terminal4]]]
+      command = cd /home/qyh/syna/dragon/IntrinsycDragonBoard810-AndroidBSP-MM-3.0/Source_Package/APQ8094_LA.BF64.1.2.2-01640-8x94.0_MM_V30;bash
+      order = 0
+      parent = child3
+      profile = default
+      type = Terminal
+      uuid = b1fd22e9-fe5f-4083-b3df-6f2367084a6d
+    [[[terminal5]]]
+      command = cd /home/qyh/syna/dragon/IntrinsycDragonBoard810-AndroidBSP-MM-3.0/Source_Package/APQ8094_LA.BF64.1.2.2-01640-8x94.0_MM_V30;cd out/target/product/msm8994;bash
+      order = 1
+      parent = child3
+      profile = default
+      type = Terminal
+      uuid = b4f10e5c-a9f0-4a75-a0b9-f5ccb7c75f02
+    [[[terminal6]]]
+      command = cd /home/qyh/syna/dragon/IntrinsycDragonBoard810-AndroidBSP-MM-3.0/Source_Package/APQ8094_LA.BF64.1.2.2-01640-8x94.0_MM_V30;cd kernel;git status;bash
+      order = 2
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = 4efb1c15-6e8c-4362-a523-5dedfc3f5bd0
+[plugins]
+[profiles]
+  [[default]]
+    background_image = None
+	background_color = "#2e2f31"
+    cursor_shape = ibeam
+    font = Liberation Mono 14
+	foreground_color = "#f3f0e7"
+    show_titlebar = False
+	copy_on_selection = True
+    use_system_font = False
+  [[default2]]
+    background_color = "#0e2424"
+    background_darkness = 0.68
+    background_image = ""
+    cursor_shape = ibeam
+    font = Liberation Mono 14
+    foreground_color = "#e8e8e8"
+    palette = "#000000:#5a8e1c:#2d5f5f:#cdcd00:#1e90ff:#cd00cd:#00cdcd:#e5e5e5:#4c4c4c:#868e09:#00ff00:#ffff00:#4682b4:#ff00ff:#00ffff:#ffffff"
+    scroll_background = False
+    scrollback_lines = 3000
+    use_system_font = False

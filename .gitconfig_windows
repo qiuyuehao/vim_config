@@ -1,0 +1,19 @@
+[user]
+	name = Yuehao Qiu
+	email = Yuehao.Qiu@synaptics.com
+[credential]
+	helper = store
+[core]
+	fileMode = false
+[diff]
+	tool = bc3
+[difftool "bc3"]
+	cmd = \"C:\\Program Files (x86)\\Beyond Compare 3\\BCompare.exe\"  \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[merge]
+	tool = bc3
+[mergetool "bc3"]
+	cmd = \"C:\\Program Files (x86)\\Beyond Compare 3\\BCompare.exe\"  \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+[mergetool]
+	keepBackup = false
