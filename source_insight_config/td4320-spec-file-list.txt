@@ -1,0 +1,9 @@
+calc2\daq\td4320\td4320_frame_program.daq
+calc2\src\platform\td4320\platform_td4320.c
+calc2\src\platform\td4320\platform_td4320.h
+calc2\src\platform\td4320\platform_td4320_internal.h
+calc2\src\platform\td4320\platform_td4320_production_test.c
+calc2\src\platform\td4320\platform_td4320_production_test.h
+calc2\src\platform\td4320\platform_td4320_scalefactor.c
+calc2\src\platform\td4320\platform_td4320_scalefactor.h
+chimlibc\include\asic\td4320.h
