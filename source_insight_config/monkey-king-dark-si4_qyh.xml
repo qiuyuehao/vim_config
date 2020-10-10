@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SourceInsightConfiguration
-	AppVer="4.00.0093"
+	AppVer="4.00.0084"
 	AppVerMinReader="4.00.0032"
 	>
 	<!-- This is a Source Insight configuration file. -->
@@ -1147,7 +1147,7 @@
 			ShowRefHighlights="0"
 			TabWidth="4"
 			MarginWidth="120"
-			IndentWidth="0"
+			IndentWidth="1"
 			AutoInsertPairs="1"
 			ParsePatternSymbolType=""
 			AutoIndentMode="2"
@@ -2069,7 +2069,7 @@
 		</Type>
 	</FileTypes>
 	<Styles
-		StyleAppVer="4.00.0093"
+		StyleAppVer="4.00.0084"
 		>
 		<Style Name="Default Text" Scale="85" />
 		<Style Name="Number" TextColor="#ae81ff" />
@@ -2165,7 +2165,7 @@
 			Underline="Single"
 			ParentStyle="Declaration"
 			/>
-		<Style Name="Label" ParentStyle="Declaration" TextColor="#f92690" />
+		<Style Name="Label" TextColor="#f92690" ParentStyle="Declaration" />
 		<Style Name="Declare Interface" ParentStyle="Declare Class" />
 		<Style Name="Declare Resource" ParentStyle="Declaration" />
 		<Style Name="File" ParentStyle="Declaration" />
@@ -2359,9 +2359,9 @@
 		<Style Name="Register" TextColor="#008000" Bold="1" />
 		<Style
 			Name="Python Doc String"
-			TextColor="#000080"
-			FixedWhiteSpace="0"
 			Italic="1"
+			FixedWhiteSpace="0"
+			TextColor="#808080"
 			/>
 		<Style Name="Instruction" ParentStyle="Control" />
 		<Style
@@ -7564,7 +7564,6 @@
 			ParseCOMMacros="1"
 			IgnoreNamespaces="0"
 			IgnoreJavaPackages="1"
-			SupportMicrochipC="0"
 			DefaultHTMLScriptLanguage="JavaScript"
 			/>
 	</ParsingOptions>
@@ -7800,7 +7799,7 @@
 		<SymbolTypes All="1" />
 	</ProjectReport>
 	<SymbolPane
-		Width="313"
+		Width="226"
 		TextColor="#000000"
 		BackColor="#b0b0b0"
 		ShowChanges="1"
@@ -8073,7 +8072,7 @@
 			TextColor="#000000"
 			BackColor="#ffffff"
 			>
-			<Font name="Segoe UI" psize="9" fpfamily="34" charset="0" />
+			<Font name="Arial" psize="9" fpfamily="0" charset="0" />
 		</ListDisplay>
 	</BookmarkWindow>
 	<SnippetWindow>
@@ -8118,7 +8117,6 @@
 		ViewLineNumbers="0"
 		ShowOverview="0"
 		PercentScale="100"
-		ShowBaseStructure="1"
 		BackColor="#303030"
 		>
 		<ListDisplay
@@ -8403,7 +8401,7 @@
 		</RelationWindowOptions>
 		<DefaultRelationOptions>
 			<RelationOptions
-				ViewMode="Outline"
+				ViewMode="GraphHorizontal"
 				IsLocked="0"
 				ExcludeMacros="0"
 				ShowMetrics="1"
@@ -8413,14 +8411,14 @@
 				ShowFileName="1"
 				AutoExpandLevels="1"
 				CodeMetricsType="1"
-				SortType="1"
+				SortType="2"
 				>
 				<TrackingOptions tracktype="1" InComments="0" InStrings="0" InAnyFile="0" />
 				<SymbolTypes All="1" />
 				<CodeMetricsFilter CodeMetricsType="1" MinValue="0" MaxValue="0" />
 				<ViewRelationRules
 					ForTypes="References"
-					ForFunctions="References"
+					ForFunctions="Calls and Callers"
 					ForVariables="References"
 					ForClasses="Inheritance"
 					ForFiles="None"

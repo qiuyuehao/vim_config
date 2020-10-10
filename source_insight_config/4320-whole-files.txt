@@ -103,7 +103,6 @@ comm2\config.defs
 comm2\fletcher32.c
 comm2\fletcher32.h
 comm2\lextab.py
-comm2\main.c
 comm2\main_fw.c
 comm2\Makefile
 comm2\print_buffer.c
@@ -113,6 +112,11 @@ comm2\sha256.h
 comm2\video.c
 comm2\video.h
 comm2\yacctab.py
+daq2\include\daq2.h
+daq2\include\daq2_video.h
+daq2\include\daq_instructions.h
+daq2\include\daq_slurper.h
+daq2\src\daq2.c
 ifp\adaptive_lgm.c
 ifp\adaptive_lgm.h
 ifp\anti_bending.c
