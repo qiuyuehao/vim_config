@@ -295,6 +295,8 @@ touchboot\spiflash.c
 touchboot\spiflash.h
 touchboot\xxtea.c
 touchboot\xxtea.h
+touchcomm\i2c_spi.c
+touchcomm\touchcomm.h
 calc2\daq\td4320\td4320_frame_program.daq
 calc2\src\platform\td4320\platform_td4320.c
 calc2\src\platform\td4320\platform_td4320.h

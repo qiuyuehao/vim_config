@@ -295,3 +295,5 @@ touchboot\spiflash.c
 touchboot\spiflash.h
 touchboot\xxtea.c
 touchboot\xxtea.h
+touchcomm\i2c_spi.c
+touchcomm\touchcomm.h
