@@ -111,7 +111,6 @@ comm2\print_buffer.c
 comm2\print_buffer.h
 comm2\sha256.c
 comm2\sha256.h
-comm2\touchcomm.c
 comm2\video.c
 comm2\video.h
 comm2\yacctab.py
