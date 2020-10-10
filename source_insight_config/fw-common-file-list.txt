@@ -36,7 +36,6 @@ calc2\src\loze.c
 calc2\src\loze.h
 calc2\src\lpwg.c
 calc2\src\lpwg.h
-calc2\src\main.c
 calc2\src\Makefile
 calc2\src\mathlib.c
 calc2\src\nsm2.h
