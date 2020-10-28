@@ -1,4 +1,4 @@
 #!/bin/sh
-apt-get install $@ -y
-apt-get install -f
-apt-get install $@ -y
+sudo apt-get install $1 -y
+sudo apt-get install -f
+sudo apt-get install $1 -y
