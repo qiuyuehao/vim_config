@@ -117,42 +117,30 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH=$PATH:/home/qyh/android_src_code/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin:/home/qyh/android_src_code/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/bin:/home/qyh/android_src_code/prebuilts/android-emulator/linux-x86_64
+
 alias cd1='cd ..'
 alias cd2='cd ../..'
 alias cd3='cd ../../..'
 alias cd4='cd ../../../..'
 alias cd5='cd ../../../../..'
-DRAGON_SRC_PATH="/home/qyh/syna/dragon/IntrinsycDragonBoard810-AndroidBSP-MM-3.0/Source_Package/APQ8094_LA.BF64.1.2.2-01640-8x94.0_MM_V30"
-TOUCH_PATH="drivers/input/touchscreen"
-alias cddragon="cd $DRAGON_SRC_PATH"
-VIMTCM="vim $TOUCH_PATH/synaptics_tcm/synaptics_tcm_core.c"
-VIMDSX="vim $TOUCH_PATH/synaptics_dsx/synaptics_dsx_core.c"
-VIMTOUCH="vim $TOUCH_PATH"
-alias vimdragon='cddragon;cd kernel;$VIMTOUCH;'
-alias vimdragondsx='cddragon;cd kernel;$VIMDSX;'
-alias vimdragontcm='cddragon;cd kernel;$VIMTCM;'
-SYNA_KERNEL_PATH="/home/qyh/github_qyh/syna_kernel"
-alias cdsyna="cd $SYNA_KERNEL_PATH"
-alias vimsyna="cd $SYNA_KERNEL_PATH;$VIMTOUCH"
-alias vimsynadsx="cd $SYNA_KERNEL_PATH;$VIMDSX"
-alias vimsynatcm="cd $SYNA_KERNEL_PATH;$VIMTCM"
-alias mb='make bootimage -j4'
-alias db='fastboot flash boot /home/qyh/dragon/IntrinsycDragonBoard810-AndroidBSP-MM-3.0/Source_Package/APQ8094_LA.BF64.1.2.2-01640-8x94.0_MM_V30/out/target/product/msm8994/boot.img'
-alias akill='adb kill-server'
-alias astart='adb start-server'
-alias np='notepad-plus-plus'
-ssh-add ~/.ssh/id_rsa_github > /dev/null 2>&1
-ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
+alias sd='shutdown now'
+alias gdiff='git difftool -d --no-symlinks -y'
+
+export SYNA_SITE=taipei
+export SYNA_TOOLS_ROOT=$RELPATH/toolbox/bundle
+export SYNA_TOOLS_OS=linux-gnu-x86_64
+export SYNA_TOOLS_MODE=BUNDLE
+export SYNA_TOOLS_VER=latest
+export SYNA_HOME=$RELPATH/toolbox/bundle/latest/linux-gnu-x86_64
+#export BUNDLE_VERSION=latest
+export BUNDLE_VERSION=2020-04-01
+PATH=$PATH:$SYNA_HOME/bin
 
 
 export JAVA_HOME=/home/qyh/bin/jdk1.8.0_212
-export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH
-export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH export JRE_HOME=$JAVA
-
-
-export SYNA_HOME=/toolbox/release/linux-gnu-x86_64
-export PATH=/toolbox/release/linux-gnu-x86_64/bin:$PATH
-alias gdiff='git difftool -d --no-symlinks -y'
-#can use gdiff HEAD HEAD^
-#can use gdiff commit commit
+export JRE_HOME=$JAVA_HOME/jre
+export CLASSPATH=$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib
+export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
+export NOGITCHECK=1
+export NOPACKRAT=1
+export DO_NOT_ALLOCATE_PACKRAT=1
